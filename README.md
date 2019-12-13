@@ -32,8 +32,8 @@ Algorithms for Detection of Lymph Node Metastases in Women With Breast Cancer.
 JAMA: The Journal of the American Medical Association, 318(22), 2199–2210.
 [doi:jama.2017.14585](https://doi.org/10.1001/jama.2017.14585)**
 
-
-
+It is worth noting that this dataset is different from the [Kaggle PCAM
+dataset](https://www.kaggle.com/c/histopathologic-cancer-detection).
 
 
 <!--
