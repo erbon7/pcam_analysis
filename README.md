@@ -25,7 +25,7 @@ Veeling:
 Equivariant CNNs for Digital Pathology".
 [arXiv:1806.03962](http://arxiv.org/abs/1806.03962)**
 
-A citation of the original Camelyon16 dataset paper is appreciated as well:
+For the original Camelyon16 dataset paper, see:
 
 **[2] Ehteshami Bejnordi et al. Diagnostic Assessment of Deep Learning
 Algorithms for Detection of Lymph Node Metastases in Women With Breast Cancer.
