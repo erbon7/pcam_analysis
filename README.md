@@ -19,22 +19,25 @@ For more details on the dataset, please see the original [PCAM
 repository](https://github.com/basveeling/pcam) on github.
 
 This dataset was released as part of a scientific work by PhD student Bas
-Veeling:
+Veelin [1]. For the original Camelyon16 dataset paper, see [2].
+
+It is worth noting that this dataset is slightly different from the [Kaggle
+PCAM dataset](https://www.kaggle.com/c/histopathologic-cancer-detection), and
+that the results are not the same.
+
+
+
+
+## Biliography
 
 **[1] B. S. Veeling, J. Linmans, J. Winkens, T. Cohen, M. Welling. "Rotation
 Equivariant CNNs for Digital Pathology".
 [arXiv:1806.03962](http://arxiv.org/abs/1806.03962)**
 
-For the original Camelyon16 dataset paper, see:
-
 **[2] Ehteshami Bejnordi et al. Diagnostic Assessment of Deep Learning
 Algorithms for Detection of Lymph Node Metastases in Women With Breast Cancer.
 JAMA: The Journal of the American Medical Association, 318(22), 2199–2210.
 [doi:jama.2017.14585](https://doi.org/10.1001/jama.2017.14585)**
-
-It is worth noting that this dataset is different from the [Kaggle PCAM
-dataset](https://www.kaggle.com/c/histopathologic-cancer-detection).
-
 
 <!--
 <img src="img/accuracy.png" width="200" align="center">
