@@ -1,15 +1,16 @@
 # pcam_analysis
 
-This repository presents an exploratory analysis of the PCAM dataset.
+This repository presents an exploratory analysis of the PCAM dataset, using
+off-the-shelf deep learning libraries (tensorflow & keras).
 
 PatchCamelyon (PCAM) is a public dataset of 327.680 images (96 x 96 px)
 extracted from histopathologic microscope scans of lymph nodes sections.
 
 Each image is annotated with a binary label indicating the presence of
-metastatic (i.e. tumoral) tissue in the center of image (within a 32 x 32 px
-frame). A positive value indicates that the center 32x32px region of the image
-conatins at least one pixel of tumor tissue. Note that tumor tissue in the
-outer region does not influence the value of the label. 
+metastatic (i.e. tumoral) tissue in the center of image. A positive value
+indicates that the center 32 x 32 px region of the image contains at least one
+pixel of tumor tissue. Note that tumor tissue in the outer region does not
+influence the value of the label. 
 
 The original dataset is divided into a training set of 262.144 examples, a
 validation set of 32768 examples and a test set of 32.768 examples.
@@ -19,7 +20,6 @@ repository](https://github.com/basveeling/pcam) on github.
 
 This dataset was released as part of a scientific work by PhD student Bas
 Veeling:
-
 
 **[1] B. S. Veeling, J. Linmans, J. Winkens, T. Cohen, M. Welling. "Rotation
 Equivariant CNNs for Digital Pathology".
@@ -41,3 +41,5 @@ dataset](https://www.kaggle.com/c/histopathologic-cancer-detection).
 
 test
 -->
+
+
