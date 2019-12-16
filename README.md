@@ -1,6 +1,6 @@
 # pcam_analysis
 
-This repository presents an exploratory analysis of the PCAM dataset, using
+This notebook presents an exploratory analysis of the PCAM dataset, using
 off-the-shelf deep learning libraries (tensorflow & keras).
 
 PatchCamelyon (PCAM) is a public dataset of 327.680 images (96 x 96 px)
@@ -28,7 +28,7 @@ that the results are not the same.
 
 
 
-## Biliography
+## Bibliography
 
 **[1] B. S. Veeling, J. Linmans, J. Winkens, T. Cohen, M. Welling. "Rotation
 Equivariant CNNs for Digital Pathology".
