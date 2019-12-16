@@ -25,7 +25,16 @@ It is worth noting that this dataset is slightly different from the [Kaggle
 PCAM dataset](https://www.kaggle.com/c/histopathologic-cancer-detection), and
 that the results are not the same.
 
+The PCAM dataset was downloaded according to the PCAM repository instructions
+from the google drive and was packaged for conveniency as a single numpy "npz"
+file containing the training, validation and test datasets.  
 
+The deep learning models are coded in python with
+[tensorflow](https://www.tensorflow.org/) version 1.18 and
+[keras](https://keras.io/) version 2.2.4.
+
+The training and testing was done on an AWS ubuntu deep learning image with an
+NVIDIA K80 GPU card. 
 
 
 ## Bibliography
