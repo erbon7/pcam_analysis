@@ -45,11 +45,22 @@ ConvNets) were tested on the dataset. CNNs leverage the spatial information of
 2D images and are therefore very well suited for classification tasks and their
 architecture is inspired by the visual cortex. 
 
-Here we try four different models for the PCAM dataset:
-1. Simple and shallow CNN model with few (6) layers.
-1. Deep CNN model with multiple layers,   
-1. Transfer learning model based on Google Inception V3 with ImageNet weights.
-1. Full re-training of the Inception V3 on the PCAM dataset.
+Here we try four different models for the PCAM dataset of increasing complexity:
+
+1. Simple and shallow CNN model with few layers (6 layers).
+1. Deep CNN model with multiple layers (28 layers).   
+1. Transfer learning model based on Google Inception V3 with ImageNet weights (314 layers).
+1. Full re-training of the Inception V3 on the PCAM dataset (314 layers).
+
+
+For each model, we train for a few epochs, compute accuracy and loss on the
+validation set and finally calculate accuracy, loss and ROC AUC on the test
+set.
+
+
+| | Simple Model | Deep model | Transfer learning | Full Inception |   
+
+
 
 ## Bibliography
 
