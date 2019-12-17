@@ -1,5 +1,7 @@
 # pcam_analysis
 
+## Introduction
+
 This notebook presents an exploratory analysis of the PCAM dataset, using
 off-the-shelf deep learning libraries (tensorflow & keras).
 
@@ -36,6 +38,18 @@ The deep learning models are coded in python with
 The training and testing was done on an AWS ubuntu deep learning image with an
 NVIDIA K80 GPU card. 
 
+## Results
+
+Three different types of convolutional neural networks (CNNs, also named
+ConvNets) were tested on the dataset. CNNs leverage the spatial information of
+2D images and are therefore very well suited for classification tasks and their
+architecture is inspired by the visual cortex. 
+
+Here we try four different models for the PCAM dataset:
+1. Simple and shallow CNN model with few (6) layers.
+1. Deep CNN model with multiple layers,   
+1. Transfer learning model based on Google Inception V3 with ImageNet weights.
+1. Full re-training of the Inception V3 on the PCAM dataset.
 
 ## Bibliography
 
