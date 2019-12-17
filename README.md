@@ -58,8 +58,8 @@ validation set and finally calculate accuracy, loss and ROC AUC on the test
 set.
 
 
-| | Simple Model | Deep model | Transfer learning | Full Inception |   
-
+|  | Simple Model | Deep model | Transfer learning | Full Inception |   
+|--|--------------|------------|-------------------|----------------|
 
 
 ## Bibliography
