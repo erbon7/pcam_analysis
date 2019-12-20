@@ -52,14 +52,33 @@ Here we try four different models for the PCAM dataset of increasing complexity:
 1. Transfer learning model based on Google Inception V3 with ImageNet weights (314 layers).
 1. Full re-training of the Inception V3 on the PCAM dataset (314 layers).
 
+The simple model is based after a [keras
+example](https://keras.io/examples/mnist_cnn/) of a simple CNN model for the
+MNIST dataset.   
+
+This model is composed of  2 convulotional layers followed by a pooling layer,
+a dropout layer, a dense layer and finally by the output layer:
+
+Conv -> Conv -> Pooling -> Dropout -> Dense -> Output
+
 
 For each model, we train for a few epochs, compute accuracy and loss on the
 validation set and finally calculate accuracy, loss and ROC AUC on the test
 set.
 
 
-|  | Simple Model | Deep model | Transfer learning | Full Inception |   
-|--|--------------|------------|-------------------|----------------|
+|                 | Simple CNN   | Deep CNN   | Transfer learning | Full Inception |   
+|-----------------|--------------|------------|-------------------|----------------|
+| Nb epochs       | 15           | 15         | 15                | 10             |
+| Batch size      | 32           | 32         | 32                | 64             |
+| Dense layer     | 256          | 256        | 256               | 256            |
+| Tot. nb param.  | 9.5 M        | 2.4 M      | 22.3 M            | 22.3 M         |
+| Training param. | 9.5 M        | 2.4 M      | 524 K             | 22.2 M         |
+| Nb layers       | 10           | 28         | 314               | 314            |
+| Max valid. acc. | 0.82         | 0.88       | 0.70              | 0.87           |
+| Test loss       | 0.52         | 0.39       | 0.73              | 0.47           |
+| Test acc.       | 0.79         | 0.83       | 0.68              | 0.84           | 
+| AUC             | 0.88         | 0.93       | 0.76              | 0.93           |
 
 
 ## Bibliography
@@ -73,10 +92,9 @@ Algorithms for Detection of Lymph Node Metastases in Women With Breast Cancer.
 JAMA: The Journal of the American Medical Association, 318(22), 2199–2210.
 [doi:jama.2017.14585](https://doi.org/10.1001/jama.2017.14585)**
 
-<!--
+<figure>
 <img src="img/accuracy.png" width="200" align="center">
-
-test
--->
+<figcaption>test</figcaption>
+</figure>
 
 
