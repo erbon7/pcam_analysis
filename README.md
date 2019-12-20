@@ -81,6 +81,13 @@ set.
 | AUC             | 0.88         | 0.93       | 0.76              | 0.93           |
 
 
+<figure>
+<img src="img/acc_01.png" width="600">
+<img src="img/roc_01.png" width="600">
+<figcaption>Figure 1. Validation accuracy and ROC curve for the simple model.</figcaption>
+</figure>
+
+
 ## Bibliography
 
 **[1] B. S. Veeling, J. Linmans, J. Winkens, T. Cohen, M. Welling. "Rotation
@@ -91,10 +98,5 @@ Equivariant CNNs for Digital Pathology".
 Algorithms for Detection of Lymph Node Metastases in Women With Breast Cancer.
 JAMA: The Journal of the American Medical Association, 318(22), 2199–2210.
 [doi:jama.2017.14585](https://doi.org/10.1001/jama.2017.14585)**
-
-<figure>
-<img src="img/roc_01.png" width="600">
-<figcaption>Figure 1. ROC curve for the simple model.</figcaption>
-</figure>
 
 
