@@ -84,25 +84,25 @@ set.
 <figure>
 <img src="img/acc_01.png" width="600">
 <img src="img/roc_01.png" width="600">
-<figcaption>**Figure 1.** Validation accuracy and ROC curve for the simple model.</figcaption>
+<figcaption><b>Figure 1.</b> Validation accuracy and ROC curve for the simple model.</figcaption>
 </figure>
 
 <figure>
 <img src="img/acc_02.png" width="600">
 <img src="img/roc_02.png" width="600">
-<figcaption>**Figure 2.** Validation accuracy and ROC curve for the deep model.</figcaption>
+<figcaption><b>Figure 2.</b> Validation accuracy and ROC curve for the deep model.</figcaption>
 </figure>
 
 <figure>
 <img src="img/acc_03.png" width="600">
 <img src="img/roc_03.png" width="600">
-<figcaption>**Figure 3.** Validation accuracy and ROC curve for the transfer learning (ImageNet InceptionV3)  model.</figcaption>
+<figcaption><b>Figure 3.</b> Validation accuracy and ROC curve for the transfer learning (ImageNet InceptionV3)  model.</figcaption>
 </figure>
 
 <figure>
 <img src="img/acc_03F.png" width="600">
 <img src="img/roc_03F.png" width="600">
-<figcaption>**Figure 4.** Validation accuracy and ROC curve for the InceptionV3 model retrained on the pcam data.</figcaption>
+<figcaption><b>Figure 4.</b> Validation accuracy and ROC curve for the InceptionV3 model retrained on the pcam data.</figcaption>
 </figure>
 
 
