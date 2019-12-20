@@ -93,7 +93,7 @@ JAMA: The Journal of the American Medical Association, 318(22), 2199–2210.
 [doi:jama.2017.14585](https://doi.org/10.1001/jama.2017.14585)**
 
 <figure>
-<img src="img/roc_01.png" width="800">
+<img src="img/roc_01.png" width="600">
 <figcaption>Figure 1. ROC curve for the simple model.</figcaption>
 </figure>
 
