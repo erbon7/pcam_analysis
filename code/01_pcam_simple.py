@@ -22,7 +22,7 @@ input_shape = (img_rows, img_cols, 3)
 nb_epochs = 15 
 batch_size = 32 
 nb_dense_layers = 256 
-verbose = 1 
+verbose = 2 
 
 print("nb epochs: "+str(nb_epochs))
 print("batch size: "+str(batch_size))
