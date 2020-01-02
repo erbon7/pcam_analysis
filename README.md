@@ -20,6 +20,8 @@ validation set of 32768 examples and a test set of 32.768 examples.
 For more details on the dataset, please see the original [PCAM
 repository](https://github.com/basveeling/pcam) on github.
 
+The complete dataset can be dowloaded from [Google drive](https://drive.google.com/drive/folders/1gHou49cA1s5vua2V5L98Lt8TiWA3FrKB).
+
 This dataset was released as part of a scientific work by PhD student Bas
 Veelin [1]. For the original Camelyon16 dataset paper, see [2].
 
