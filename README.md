@@ -25,7 +25,7 @@ The complete dataset can be dowloaded from [Google drive](https://drive.google.c
 This dataset was released as part of a scientific work by PhD student Bas
 Veelin [1]. For the original Camelyon16 dataset paper, see [2].
 
-<!__It is worth noting that this dataset is slightly different from the [Kaggle
+<!--It is worth noting that this dataset is slightly different from the [Kaggle
 PCAM dataset](https://www.kaggle.com/c/histopathologic-cancer-detection), and
 that the results are not the same.-->
 
