@@ -23,9 +23,9 @@ repository](https://github.com/basveeling/pcam) on github.
 This dataset was released as part of a scientific work by PhD student Bas
 Veelin [1]. For the original Camelyon16 dataset paper, see [2].
 
-It is worth noting that this dataset is slightly different from the [Kaggle
+<!__It is worth noting that this dataset is slightly different from the [Kaggle
 PCAM dataset](https://www.kaggle.com/c/histopathologic-cancer-detection), and
-that the results are not the same.
+that the results are not the same.-->
 
 The PCAM dataset was downloaded according to the PCAM repository instructions
 from the google drive and was packaged for conveniency as a single numpy "npz"
@@ -45,7 +45,7 @@ ConvNets) were tested on the dataset. CNNs leverage the spatial information of
 2D images and are therefore very well suited for classification tasks and their
 architecture is inspired by the visual cortex. 
 
-Here we try four different models for the PCAM dataset of increasing complexity:
+Here I try four different models for the PCAM dataset of increasing complexity:
 
 1. Simple and shallow CNN model with few layers (6 layers).
 1. Deep CNN model with multiple layers (28 layers).   
@@ -59,13 +59,15 @@ a dropout layer, a dense layer and finally by the output layer:
 
 In -> Conv -> Conv -> Pooling -> Dropout -> Dense -> Out
 
-The deep model was inspired by a [kaggle model](https://www.kaggle.com/fmarazzi/baseline-keras-cnn-roc-fast-10min-0-925-lb)by Francesco Marazzi:
+The deep model was inspired by a [kaggle model](https://www.kaggle.com/fmarazzi/baseline-keras-cnn-roc-fast-10min-0-925-lb) by Francesco Marazzi:
 
 In -> [Conv x2 -> Pool -> Dropout] x3 -> Dense -> Dropout -> Out
 
-For transfer learning, we load the InceptionV3 model trained on the full ImageNet dataset from keras. The model is imported without the top layers, and a global average pooling and a dense layers are added and trained on the data.
+For transfer learning, I load the InceptionV3 model trained on the full ImageNet dataset from keras. The model is imported without the top layers, and a global average pooling and a dense layers are added and trained on the data.
 
-For each model, we train for a few epochs, compute accuracy and loss on the
+Finally, I also re-train the InceptionV3 model on the dataset, by setting all the layers as trainable and re-running the complete dataset on the model.
+
+For each model, I train for a few epochs, compute accuracy and loss on the
 validation set and finally calculate accuracy, loss and ROC AUC on the test
 set.
 
