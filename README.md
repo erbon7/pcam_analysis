@@ -54,13 +54,16 @@ Here we try four different models for the PCAM dataset of increasing complexity:
 
 The simple model is based after a [keras
 example](https://keras.io/examples/mnist_cnn/) of a simple CNN model for the
-MNIST dataset.   
-
-This model is composed of  2 convulotional layers followed by a pooling layer,
+MNIST dataset. The model is composed of  2 convolutional layers followed by a pooling layer,
 a dropout layer, a dense layer and finally by the output layer:
 
-Conv -> Conv -> Pooling -> Dropout -> Dense -> Output
+In -> Conv -> Conv -> Pooling -> Dropout -> Dense -> Out
 
+The deep model was inspired by a [kaggle model](https://www.kaggle.com/fmarazzi/baseline-keras-cnn-roc-fast-10min-0-925-lb)by Francesco Marazzi:
+
+In -> [Conv x2 -> Pool -> Dropout] x3 -> Dense -> Dropout -> Out
+
+For transfer learning, we load the InceptionV3 model trained on the full ImageNet dataset from keras. The model is imported without the top layers, and a global average pooling and a dense layers are added and trained on the data.
 
 For each model, we train for a few epochs, compute accuracy and loss on the
 validation set and finally calculate accuracy, loss and ROC AUC on the test
