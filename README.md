@@ -81,11 +81,16 @@ set.
 | Dense layer     | 256          | 256        | 256               | 256            |
 | Tot. nb param.  | 9.5 M        | 2.4 M      | 22.3 M            | 22.3 M         |
 | Training param. | 9.5 M        | 2.4 M      | 524 K             | 22.2 M         |
+| Timing 1 epoch  | 325 s        | 562 s      | 468 s             | 1333 s         |
 | Nb layers       | 10           | 28         | 314               | 314            |
 | Max valid. acc. | 0.82         | 0.88       | 0.70              | 0.87           |
 | Test loss       | 0.52         | 0.39       | 0.73              | 0.47           |
 | Test acc.       | 0.79         | 0.83       | 0.68              | 0.84           | 
 | AUC             | 0.88         | 0.93       | 0.76              | 0.93           |
+
+
+By looking at the performance indicators on the test set (loss, accuracy and AUC-ROC), we can see that the simple model performs quite well (0.88 AUC), but that a deeper model performs even better (0.93 AUC). Transfer learning with the InceptionV3 model does not work well, with an AUC thathas the lowest value for the four models tested here (0.76). Re-training the InceptionV3 model brings improved results that are comparable to the deep model (identical AUC, loss higher and accuracy quite equal). The reason why transfer learning does not work in this case could be that the features learned by the model on the ImageNet dataset are not relevant for the PCAM dataset.
+
 
 
 <figure>
