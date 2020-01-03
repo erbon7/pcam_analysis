@@ -21,10 +21,10 @@ logging.info("loading data")
 
 
 # Hyper parameters
-nb_epochs = 2 
-batch_size = 32 
+nb_epochs = 10 
+batch_size = 64 
 nb_dense_layers = 256
-data_augmentation = True 
+data_augmentation = False 
 
 print("nb epochs: "+str(nb_epochs))
 print("batch size: "+str(batch_size))
@@ -46,7 +46,6 @@ if data_augmentation == True:
 
 # create the base pre-trained model
 base_model = InceptionV3(weights='imagenet', include_top=False)
-#base_model = VGG16(weights='imagenet', include_top=False)
 
 # add a global spatial average pooling layer
 x = base_model.output
@@ -54,36 +53,20 @@ x = GlobalAveragePooling2D()(x)
 
 # let's add a fully-connected layer
 x = Dense(nb_dense_layers, activation='relu')(x)
-
 predictions = Dense(1, activation='sigmoid')(x)
-
-# this is the model we will train
 model = Model(inputs=base_model.input, outputs=predictions)
 
 # first: train only the top layers (which were randomly initialized)
 # i.e. freeze all convolutional InceptionV3 layers
+# if this value is set to True, the model will be fully re-trained on the dataset
 for layer in base_model.layers:
-    layer.trainable = False
-    #layer.trainable = True 
+    layer.trainable = False 
 
-# we chose to train the top 2 inception blocks, i.e. we will freeze
-# the first 249 layers and unfreeze the rest:
-#for layer in m.layers[:249]:
-#   layer.trainable = False
-#for layer in m.layers[249:]:
-#   layer.trainable = True
-
-#ct = 0
-#for layer in m.layers:
-#    print(ct, layer, layer.trainable)
-#    ct += 1
-#sys.exit(1)
-
+# set checkpointing
 checkpoint = ModelCheckpoint("pcam_weights.hd5", monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
 model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
-#model.compile(loss="binary_crossentropy", optimizer=Adam(lr=0.001), metrics=["accuracy"])
 
 print(model.summary())
 print("nb layers: "+str(len(model.layers)))

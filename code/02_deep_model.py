@@ -92,9 +92,9 @@ model.compile(Adam(0.001), loss = "binary_crossentropy", metrics=["accuracy"])
 model.summary()
 print("nb layers: "+str(len(model.layers)))
 
+# checkpointing set to save the best model 
 checkpoint = ModelCheckpoint("pcam_weights.hd5", monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
-
 
 logging.info("training model")
 
@@ -110,6 +110,7 @@ logging.info("training done")
 # load best weights
 model.load_weights("pcam_weights.hd5")
 
+# evaluation on the test set and figures
 logging.info("evaluate model")
 
 score = model.evaluate(x_test, y_test, verbose=0)
