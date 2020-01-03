@@ -20,14 +20,11 @@ validation set of 32768 examples and a test set of 32.768 examples.
 For more details on the dataset, please see the original [PCAM
 repository](https://github.com/basveeling/pcam) on github.
 
-The complete dataset can be dowloaded from [Google drive](https://drive.google.com/drive/folders/1gHou49cA1s5vua2V5L98Lt8TiWA3FrKB).
+The complete dataset can be dowloaded from [Google
+drive](https://drive.google.com/drive/folders/1gHou49cA1s5vua2V5L98Lt8TiWA3FrKB).
 
 This dataset was released as part of a scientific work by PhD student Bas
 Veelin [1]. For the original Camelyon16 dataset paper, see [2].
-
-<!--It is worth noting that this dataset is slightly different from the [Kaggle
-PCAM dataset](https://www.kaggle.com/c/histopathologic-cancer-detection), and
-that the results are not the same.-->
 
 The PCAM dataset was downloaded according to the PCAM repository instructions
 from the google drive and was packaged for conveniency as a single numpy "npz"
@@ -61,13 +58,18 @@ a dropout layer, a dense layer and finally by the output layer:
 
 In -> Conv -> Conv -> Pooling -> Dropout -> Dense -> Out
 
-The deep model was inspired by a [kaggle model](https://www.kaggle.com/fmarazzi/baseline-keras-cnn-roc-fast-10min-0-925-lb) by Francesco Marazzi:
+The deep model was inspired by a [kaggle
+model](https://www.kaggle.com/fmarazzi/baseline-keras-cnn-roc-fast-10min-0-925-lb)
+by Francesco Marazzi:
 
 In -> [Conv x2 -> Pool -> Dropout] x3 -> Dense -> Dropout -> Out
 
-For transfer learning, I load the InceptionV3 model trained on the full ImageNet dataset from keras. The model is imported without the top layers, and a global average pooling and a dense layers are added and trained on the data.
+For transfer learning, I load the InceptionV3 model trained on the full
+ImageNet dataset from keras. The model is imported without the top layers, and
+a global average pooling and a dense layers are added and trained on the data.
 
-Finally, I also re-train the InceptionV3 model on the dataset, by setting all the layers as trainable and re-running the complete dataset on the model.
+Finally, I also re-train the InceptionV3 model on the dataset, by setting all
+the layers as trainable and re-running the complete dataset on the model.
 
 For each model, I train for a few epochs, compute accuracy and loss on the
 validation set and finally calculate accuracy, loss and ROC AUC on the test
@@ -89,7 +91,15 @@ set.
 | AUC             | 0.88         | 0.93       | 0.76              | 0.93           |
 
 
-By looking at the performance indicators on the test set (loss, accuracy and AUC-ROC), we can see that the simple model performs quite well (0.88 AUC), but that a deeper model performs even better (0.93 AUC). Transfer learning with the InceptionV3 model does not work well, with an AUC thathas the lowest value for the four models tested here (0.76). Re-training the InceptionV3 model brings improved results that are comparable to the deep model (identical AUC, loss higher and accuracy quite equal). The reason why transfer learning does not work in this case could be that the features learned by the model on the ImageNet dataset are not relevant for the PCAM dataset.
+By looking at the performance indicators on the test set (loss, accuracy and
+AUC-ROC), we can see that the simple model performs quite well (0.88 AUC), but
+that a deeper model performs even better (0.93 AUC). Transfer learning with the
+InceptionV3 model does not work well, with an AUC thathas the lowest value for
+the four models tested here (0.76). Re-training the InceptionV3 model brings
+improved results that are comparable to the deep model (identical AUC, loss
+higher and accuracy quite equal). The reason why transfer learning does not
+work in this case could be that the features learned by the model on the
+ImageNet dataset are not relevant for the PCAM dataset.
 
 
 
