@@ -10,6 +10,10 @@ from sklearn.metrics import roc_curve, auc
 from pcam_utils import plot_figures, load_norm_data
 import logging
 
+# written by Eric Bonnet 12.2019
+# eric.d.bonnet@gmail.com
+# simple CNN model for the pcam dataset
+
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
 
 logging.info("loading data")

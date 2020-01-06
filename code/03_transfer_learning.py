@@ -14,6 +14,10 @@ import logging
 
 from keras.applications.inception_v3 import InceptionV3
 
+# written by Eric Bonnet 12.2019
+# eric.d.bonnet@gmail.com
+# transfer learning and full Inception re-training model for the pcam dataset
+
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
 
 logging.info("loading data")
