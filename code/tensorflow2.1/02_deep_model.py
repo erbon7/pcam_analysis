@@ -29,7 +29,7 @@ first_filters = 32
 second_filters = 64
 third_filters = 128
 nb_dense_layers = 256
-data_augmentation = True 
+data_augmentation = False 
 
 print("nb epochs: "+str(nb_epochs))
 print("batch size: "+str(batch_size))
