@@ -1,13 +1,13 @@
-#import tensorflow.keras as keras
 import sys
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, Activation, Flatten, Dropout
 from tensorflow.keras.optimizers import SGD, Adadelta
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.callbacks import ModelCheckpoint
+from tensorflow.keras.losses import binary_crossentropy
 from tensorflow.keras import metrics
 from sklearn.metrics import roc_curve, auc
-from pcam_utils2 import plot_figures, load_norm_data
+from pcam_utils import plot_figures, load_norm_data
 import logging
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
@@ -51,7 +51,7 @@ model.add(Activation("relu"))
 model.add(Dense(1, activation="sigmoid"))
 
 # compile and display model
-model.compile(loss=keras.losses.binary_crossentropy, optimizer=keras.optimizers.Adadelta(), metrics=['accuracy'])
+model.compile(loss=binary_crossentropy, optimizer=Adadelta(), metrics=['accuracy'])
 model.summary()
 print("nb layers: "+str(len(model.layers)))
 
