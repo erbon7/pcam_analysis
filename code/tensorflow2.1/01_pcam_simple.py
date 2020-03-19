@@ -10,6 +10,10 @@ from sklearn.metrics import roc_curve, auc
 from pcam_utils import plot_figures, load_norm_data
 import logging
 
+# written by Eric Bonnet 03.2020
+# eric.d.bonnet@gmail.com
+# very simple CNN model for the pcam dataset
+
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
 
 logging.info("loading data")
@@ -56,8 +60,8 @@ model.summary()
 print("nb layers: "+str(len(model.layers)))
 
 # use checkpointing to save best weights
-checkpoint_path = "model.h5"
-checkpoint = ModelCheckpoint(checkpoint_path, monitor='val_accuracy', verbose=1, save_best_only=True, save_weights_only=False, mode='max')
+checkpoint_path = "pcam_weights.h5"
+checkpoint = ModelCheckpoint(checkpoint_path, monitor='val_accuracy', verbose=1, save_best_only=True, save_weights_only=True, mode='max')
 
 callbacks_list = [checkpoint]
 
