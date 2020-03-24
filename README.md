@@ -34,8 +34,10 @@ The deep learning models are coded in python with
 [tensorflow](https://www.tensorflow.org/) version 1.18 and
 [keras](https://keras.io/) version 2.2.4.
 
-The training and testing was done on an AWS ubuntu deep learning image with an
+The training and testing was done on an AWS ubuntu (18.04) deep learning image with an
 NVIDIA K80 GPU card. 
+
+The code for tensorflow v2.1 (which now includes Keras) is in the tensorflow2.1 directory. 
 
 ## Results
 
