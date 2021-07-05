@@ -1,17 +1,17 @@
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation
 from tensorflow.keras.layers import Conv2D, MaxPool2D, GlobalAveragePooling2D
-from tensorflow.keras.optimizers import RMSprop, Adam
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import ModelCheckpoint
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import logging
-from pcam_utils import plot_figures, load_norm_data, save_data
+from pcam_utils import load_norm_data
 from tensorflow.keras import metrics
 from sklearn.metrics import roc_curve, auc
 
 # written by Eric Bonnet 03.2020
-# eric.d.bonnet@gmail.com
-# deep CNN model for the pcam dataset
+# eric.bonnet@cnrgh.fr
+# deep CNN model for the pcam dataset, with 6 convolutional layers
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
 
@@ -19,7 +19,6 @@ logging.info("loading data")
 (x_train, x_valid, x_test, y_train, y_valid, y_test) = load_norm_data(False)
 
 # model
-num_train_samples = len(x_train)
 
 batch_size = 32 
 nb_dense_layers = 256
@@ -32,14 +31,10 @@ pool_size= (2,2)
 first_filters = 32
 second_filters = 64
 third_filters = 128
-data_augmentation = True 
+data_augmentation = False 
 
-# tuner values
-#batch_size = 128 
-#learning_rate = 0.00514834365532297 
-#nb_dense_layers = 128
+### tuner hyperparameters optimization values
 
-#{'n_nodes': 256, 'learning_rate': 0.003745751582487425, 'batch_size': 64, 'tuner/epochs': 10, 'tuner/initial_epoch': 0, 'tuner/bracket': 0, 'tuner/round': 0}
 #batch_size = 64 
 #learning_rate = 0.003745751582487425 
 #nb_dense_layers = 256 
@@ -111,7 +106,7 @@ model.summary()
 print("nb layers: "+str(len(model.layers)))
 
 # checkpointing set to save the best model 
-checkpoint_path="pcam_weights.h5"
+checkpoint_path="weights.h5"
 checkpoint = ModelCheckpoint(checkpoint_path, monitor='val_accuracy', verbose=1, save_weights_only=True, save_best_only=True, mode='max')
 callbacks_list = [checkpoint]
 
@@ -129,7 +124,7 @@ logging.info("training done")
 # load best weights
 model.load_weights(checkpoint_path)
 
-# evaluation on the test set and figures
+# evaluation on the test set 
 logging.info("evaluate model")
 
 score = model.evaluate(x_test, y_test, verbose=0)
@@ -141,9 +136,4 @@ fpr, tpr, _ = roc_curve(y_test, y_pred)
 roc_auc = auc(fpr, tpr)
 print("ROC auc: "+str(roc_auc))
 
-#logging.info("plotting figures")
-#plot_figures(fpr, tpr, history, roc_auc, "roc.png", "loss.png", "accuracy.png")
 
-# save data to file
-logging.info("saving history data to file")
-save_data(fpr, tpr, history, roc_auc)

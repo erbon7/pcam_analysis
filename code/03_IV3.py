@@ -4,7 +4,7 @@ from tensorflow.keras.layers import Conv2D, MaxPool2D, GlobalAveragePooling2D
 from tensorflow.keras.optimizers import RMSprop, Adam
 from tensorflow.keras.models import Model
 from tensorflow.keras.callbacks import ModelCheckpoint
-from pcam_utils import save_data, load_norm_data, plot_figures
+from pcam_utils import load_norm_data
 from tensorflow.keras import metrics
 from sklearn.metrics import roc_curve, auc
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -34,7 +34,6 @@ data_augmentation = False
 #learning_rate = 0.0003259536405528544
 #batch_size = 64
 
-
 print("nb epochs: "+str(nb_epochs))
 print("batch size: "+str(batch_size))
 print("nb dense layers: "+str(nb_dense_layers))
@@ -55,7 +54,6 @@ if data_augmentation == True:
 
 # create the base pre-trained model
 base_model = InceptionV3(weights='imagenet', include_top=False)
-#base_model = InceptionV3(weights=None, include_top=False)
 
 # add a global spatial average pooling layer
 x = base_model.output
@@ -109,15 +107,10 @@ score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss: '+str(score[0]))
 print('Test accuracy: '+str(score[1]))
 
-# calculate false positive rate, true positive rate, roc area under the curve and plot figures
+# calculate false positive rate, true positive rate, roc area under the curve
 y_pred = model.predict(x_test)
 fpr, tpr, _ = roc_curve(y_test, y_pred)
 roc_auc = auc(fpr, tpr)
 print("ROC auc: "+str(roc_auc))
 
-#save_data(fpr, tpr, history, roc_auc)
-
-#prefix = "f"+str(random.randint(0,1000000))+"_"
-#print(prefix)
-#plot_figures(fpr, tpr, history.history, roc_auc, prefix+"roc.png", prefix+"loss.png", prefix+"accuracy.png")
 
