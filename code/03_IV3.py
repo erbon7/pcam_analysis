@@ -28,9 +28,9 @@ batch_size = 32
 nb_dense_layers = 256
 learning_rate = 0.001
 data_augmentation = False 
+train_full_model = False
 
 # tuner values
-# {'learning_rate': 0.0003259536405528544, 'batch_size': 64,
 #learning_rate = 0.0003259536405528544
 #batch_size = 64
 
@@ -68,14 +68,13 @@ model = Model(inputs=base_model.input, outputs=predictions)
 # i.e. freeze all convolutional InceptionV3 layers
 # if this value is set to True, the model will be fully re-trained on the dataset
 for layer in base_model.layers:
-    layer.trainable = True 
+    layer.trainable = train_full_model 
 
 # set checkpointing
-checkpoint_path = "pcam_weights"
+checkpoint_path = "weights.h5"
 checkpoint = ModelCheckpoint(checkpoint_path, monitor='val_accuracy', verbose=2, save_best_only=True, save_weights_only=True, mode='max')
 callbacks_list = [checkpoint]
 
-#model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 model.compile(loss="binary_crossentropy", optimizer=Adam(learning_rate), metrics=["accuracy"])
 
 print(model.summary())

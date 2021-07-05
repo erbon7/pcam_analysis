@@ -8,29 +8,25 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 from tensorflow.keras.losses import binary_crossentropy
 from tensorflow.keras import metrics
 from sklearn.metrics import roc_curve, auc
-from pcam_utils import save_data, load_norm_data
+from pcam_utils import load_norm_data
 import logging
 from kerastuner.tuners import RandomSearch, Hyperband
+
+# written by Eric Bonnet 06.2021
+# eric.bonnet@cnrgh.fr 
+# fine-tune some hyperparameters (batch size, dense layers size, learning rate) for 
+# a CNN with 6 convolutional layers
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
 
 logging.info("loading data")
 (x_train, x_valid, x_test, y_train, y_valid, y_test) = load_norm_data(False)
 
-#x_train = x_train[:40000,]
-#y_train = y_train[:40000,]
-
 # input image dimensions
 img_rows, img_cols = 96,96
 input_shape = (img_rows, img_cols, 3)
 
-#nb_epochs = 15 
-#batch_size = 32 
-#nb_dense_layers = 256 
-#verbose = 1 
-
-#logging.info("building model")
-
+# CNN-6L architecture
 def build_model(hp):
     
     image_size = 96
@@ -72,6 +68,7 @@ def build_model(hp):
     model.add(Dropout(dropout_conv))
      
     model.add(Flatten())
+    # try different number of nodes for final dense layer
     model.add(Dense(hp.Choice(f'n_nodes', values=[128, 256, 512, 1024]))) 
     model.add(BatchNormalization())
     model.add(Activation("relu"))
@@ -79,27 +76,16 @@ def build_model(hp):
 
     model.add(Dense(1, activation="sigmoid"))
 
+    # try different learning rate values
     model.compile(loss=binary_crossentropy, optimizer=Adam(hp.Float('learning_rate',min_value=1e-5, max_value=1e-2,sampling='LOG',default=1e-3)), metrics=['accuracy'])
 
     return model
 
-
-#class MyTuner(RandomSearch):
+# subclass Hyperband to try different batch sizes
 class MyTuner(Hyperband):
   def run_trial(self, trial, *args, **kwargs):
-      # You can add additional HyperParameters for preprocessing and custom training loops
-      # via overriding `run_trial`
       kwargs['batch_size'] = trial.hyperparameters.Int('batch_size', 32, 256, step=32)
       super(MyTuner, self).run_trial(trial, *args, **kwargs)
-
-## randomSearch model
-#tuner = MyTuner(
-#    build_model,
-#    objective='val_accuracy',
-#    max_trials=50,  # how many model variations to test?
-#    executions_per_trial=1,  # how many trials per variation? (same model could perform differently)
-#    directory='__pcam_tuner',
-#    project_name='pcam_Tuner')
 
 ## Hyperband model
 tuner = MyTuner(
@@ -107,7 +93,7 @@ tuner = MyTuner(
     objective='val_accuracy',
     max_epochs=10,
     hyperband_iterations=4,
-    executions_per_trial=1,  # how many trials per variation? (same model could perform differently)
+    executions_per_trial=1,  
     directory='__pcam_tuner',
     project_name='pcam_Tuner')
 
