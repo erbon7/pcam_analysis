@@ -1,19 +1,19 @@
 import sys
 import tensorflow as tf
-from tensorflow.keras.models import Sequential, load_model
-from tensorflow.keras.layers import Dense, Activation, Flatten, Dropout
-from tensorflow.keras.optimizers import SGD, Adadelta, Adam
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Activation, Flatten
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 from tensorflow.keras.callbacks import ModelCheckpoint
 from tensorflow.keras.losses import binary_crossentropy
 from tensorflow.keras import metrics
 from sklearn.metrics import roc_curve, auc
-from pcam_utils import save_data, load_norm_data, plot_figures
+from pcam_utils import load_norm_data
 import logging
 
 
 # written by Eric Bonnet 03.2020
-# eric.d.bonnet@gmail.com
+# eric.bonnet@cnrgh.fr 
 # very simple CNN model with 2 convolutional layers for the pcam dataset
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
@@ -30,8 +30,9 @@ verbose = 1
 
 batch_size = 32 
 nb_dense_layers = 256 
+learning_rate = 0.001
 
-# tuner values
+### tuner hyperparameters optimized values
 #batch_size = 96 
 #nb_dense_layers = 128 
 #learning_rate = 0.0003476665074399067
@@ -63,8 +64,7 @@ model.add(Activation("relu"))
 model.add(Dense(1, activation="sigmoid"))
 
 # compile and display model
-model.compile(loss=binary_crossentropy, optimizer=Adadelta(), metrics=['accuracy'])
-#model.compile(loss=binary_crossentropy, optimizer=Adam(learning_rate), metrics=['accuracy'])
+model.compile(loss=binary_crossentropy, optimizer=Adam(learning_rate), metrics=['accuracy'])
 model.summary()
 print("nb layers: "+str(len(model.layers)))
 
@@ -92,11 +92,6 @@ y_pred = model.predict(x_test)
 fpr, tpr, _ = roc_curve(y_test, y_pred)
 roc_auc = auc(fpr, tpr)
 print("ROC auc: "+str(roc_auc))
-
-# save data to file
-#save_data(fpr, tpr, history, roc_auc)
-
-#plot_figures(fpr, tpr, history.history, roc_auc, "roc.png", "loss.png", "accuracy.png")
 
 
 
