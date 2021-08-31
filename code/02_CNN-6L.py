@@ -9,8 +9,8 @@ from pcam_utils import load_norm_data
 from tensorflow.keras import metrics
 from sklearn.metrics import roc_curve, auc
 
-# written by Eric Bonnet 03.2020
-# eric.bonnet@cnrgh.fr
+# written by Eric Bonnet 
+# eric.bonnet@cea.fr
 # deep CNN model for the pcam dataset, with 6 convolutional layers
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)

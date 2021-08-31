@@ -14,8 +14,8 @@ import logging
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 from kerastuner.tuners import RandomSearch, Hyperband
 
-# written by Eric Bonnet 06.2021
-# eric.bonnet@cnrgh.fr 
+# written by Eric Bonnet
+# eric.bonnet@cea.fr 
 # fine-tune some hyperparameters (batch size, learning rate) for InceptionV3 model architecture 
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)

@@ -12,8 +12,8 @@ from pcam_utils import load_norm_data
 import logging
 from kerastuner.tuners import RandomSearch, Hyperband
 
-# written by Eric Bonnet 06.2021
-# eric.bonnet@cnrgh.fr 
+# written by Eric Bonnet 
+# eric.bonnet@cea.fr 
 # fine-tune some hyperparameters (batch size, dense layers size, learning rate) for 
 # a CNN with 6 convolutional layers
 

@@ -13,8 +13,8 @@ import random
 
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 
-# written by Eric Bonnet 03.2020
-# eric.d.bonnet@gmail.com
+# written by Eric Bonnet 
+# eric.bonnet@cea.fr
 # transfer learning and full Inception re-training model for the pcam dataset
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)

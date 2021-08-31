@@ -12,8 +12,8 @@ from pcam_utils import load_norm_data
 import logging
 
 
-# written by Eric Bonnet 03.2020
-# eric.bonnet@cnrgh.fr 
+# written by Eric Bonnet 
+# eric.bonnet@cea.fr 
 # very simple CNN model with 2 convolutional layers for the pcam dataset
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level = logging.INFO)
