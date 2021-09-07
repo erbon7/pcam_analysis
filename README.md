@@ -16,3 +16,5 @@ expected, clearly improves performance, while data augmentation and transfer
 learning do not. Fine-tuning the hyperparameters of the model notably improves
 the results, with the best model showing a performance comparable to
 state-of-the-art models.
+
+Pre-print available here: (https://arxiv.org/abs/2108.13661)
